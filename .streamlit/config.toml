@@ -1,0 +1,28 @@
+# Streamlit runtime configuration.
+# Theme values mirror assets/styles.css so the native widgets match the
+# custom HTML components.
+
+[theme]
+base = "dark"
+primaryColor = "#c8f751"
+backgroundColor = "#06070a"
+secondaryBackgroundColor = "#0d0f14"
+textColor = "#eef1f7"
+font = "sans serif"
+
+[server]
+headless = true
+maxUploadSize = 15
+maxMessageSize = 30
+enableXsrfProtection = true
+fileWatcherType = "auto"
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = true
+
+[runner]
+fastReruns = true

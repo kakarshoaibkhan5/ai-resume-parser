@@ -1,0 +1,50 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Virtual environments -------------------------------------------------
+.venv/
+venv/
+env/
+
+# --- Local configuration --------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Model weights --------------------------------------------------------
+# Downloaded with scripts/download_models.py; never commit multi-GB blobs.
+models/weights/
+*.safetensors
+*.bin
+*.onnx
+*.h5
+*.msgpack
+
+# --- Runtime artefacts ----------------------------------------------------
+logs/
+*.log
+.cache/
+.streamlit/secrets.toml
+
+# --- Generated demo assets ------------------------------------------------
+# Keep the committed gif, ignore the scratch frames.
+assets/frames/
+assets/sample_resume.pdf
+
+# --- Tooling --------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+.DS_Store
+Thumbs.db

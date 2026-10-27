@@ -1,0 +1,734 @@
+/* ==========================================================================
+   ai-resume-parser — dark premium theme
+   Single-file stylesheet injected by utils/theme.py.
+   No external assets: works fully offline.
+   ========================================================================== */
+
+:root {
+  --ink:        #06070a;
+  --ink-2:      #090b11;
+  --panel:      #0d0f14;
+  --panel-2:    #12151c;
+  --line:       rgba(255, 255, 255, 0.07);
+  --line-strong:rgba(255, 255, 255, 0.13);
+  --text:       #eef1f7;
+  --muted:      #8b93a7;
+  --muted-dim:  #616a7e;
+  --accent:     #c8f751;
+  --accent-dim: #8fc32a;
+  --violet:     #8b7bff;
+  --radius:     16px;
+  --radius-sm:  10px;
+  --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- shell -------------------------------------------------------- */
+
+.stApp {
+  background:
+    radial-gradient(1100px 520px at 82% -12%, rgba(139, 123, 255, 0.14), transparent 62%),
+    radial-gradient(900px 480px at 6% 2%, rgba(200, 247, 81, 0.07), transparent 58%),
+    var(--ink);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-testid="stHeader"] {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+[data-testid="stToolbar"] { right: 1rem; }
+
+[data-testid="stAppViewContainer"] > .main .block-container {
+  max-width: 1180px;
+  padding: 1.2rem 2.2rem 4rem;
+}
+
+#MainMenu, footer { visibility: hidden; }
+
+h1, h2, h3, h4 { color: var(--text); letter-spacing: -0.025em; font-weight: 650; }
+
+p, li, span, label, div { color: var(--text); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre { font-family: var(--mono); }
+
+/* ---------- hero --------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 3.2rem 3rem 2.6rem;
+  margin: 0.4rem 0 1.9rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008)),
+    var(--ink-2);
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(760px 340px at 78% 0%, #000 20%, transparent 78%);
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -90px;
+  top: -190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 247, 81, 0.22), transparent 68%);
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 760px; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200, 247, 81, 0.08);
+  border: 1px solid rgba(200, 247, 81, 0.22);
+  border-radius: 999px;
+  padding: 0.34rem 0.8rem;
+  margin-bottom: 1.35rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 4.4vw, 3.35rem);
+  line-height: 1.06;
+  margin: 0 0 1rem;
+  font-weight: 680;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+  position: relative;
+}
+
+.hero .lede {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin: 0 0 1.6rem;
+  max-width: 620px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted-dim);
+  letter-spacing: 0.02em;
+}
+
+.hero-meta .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.hero-meta .sep { color: rgba(255, 255, 255, 0.16); }
+
+/* ---------- section labels ---------------------------------------------- */
+
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 2.1rem 0 0.9rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-label .num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  border: 1px solid rgba(200, 247, 81, 0.25);
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+}
+
+.section-label h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-label .hint {
+  margin-left: auto;
+  font-size: 0.76rem;
+  color: var(--muted-dim);
+  font-family: var(--mono);
+}
+
+/* ---------- uploader ----------------------------------------------------- */
+
+[data-testid="stFileUploaderDropzone"] {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.006)),
+    var(--panel);
+  border: 1.5px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 2.1rem 1.5rem;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+  border-color: rgba(200, 247, 81, 0.55);
+  background:
+    linear-gradient(180deg, rgba(200, 247, 81, 0.05), rgba(255, 255, 255, 0.006)),
+    var(--panel);
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] > div > span {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] small {
+  color: var(--muted-dim);
+  font-size: 0.78rem;
+}
+
+[data-testid="stFileUploaderDropzone"] button {
+  background: rgba(255, 255, 255, 0.055) !important;
+  border: 1px solid var(--line-strong) !important;
+  color: var(--text) !important;
+  border-radius: 9px !important;
+  font-weight: 550 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+[data-testid="stFileUploaderFile"] {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+}
+
+/* ---------- buttons ------------------------------------------------------ */
+
+.stButton > button,
+.stDownloadButton > button,
+.stFormSubmitButton > button {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  color: var(--text);
+  font-weight: 560;
+  font-size: 0.88rem;
+  padding: 0.5rem 1.05rem;
+  transition: all 0.16s ease;
+  box-shadow: none;
+}
+
+.stButton > button:hover,
+.stDownloadButton > button:hover,
+.stFormSubmitButton > button:hover {
+  border-color: rgba(200, 247, 81, 0.5);
+  color: var(--accent);
+  background: rgba(200, 247, 81, 0.07);
+  transform: translateY(-1px);
+}
+
+.stButton > button[kind="primary"],
+.stDownloadButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"] {
+  background: var(--accent);
+  color: #0a0c07;
+  border: 1px solid var(--accent);
+  font-weight: 680;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stDownloadButton > button[kind="primary"]:hover,
+.stFormSubmitButton > button[kind="primary"]:hover {
+  background: #d7ff6d;
+  color: #0a0c07;
+  box-shadow: 0 0 32px -8px rgba(200, 247, 81, 0.55);
+}
+
+/* ---------- inputs ------------------------------------------------------- */
+
+.stTextArea textarea,
+.stTextInput input,
+.stNumberInput input {
+  background: var(--panel) !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-family: var(--mono) !important;
+  font-size: 0.84rem !important;
+  line-height: 1.55 !important;
+}
+
+.stTextArea textarea:focus,
+.stTextInput input:focus {
+  border-color: rgba(200, 247, 81, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(200, 247, 81, 0.1) !important;
+}
+
+.stTextArea textarea::placeholder,
+.stTextInput input::placeholder { color: var(--muted-dim) !important; }
+
+[data-testid="stWidgetLabel"] p {
+  color: var(--muted) !important;
+  font-size: 0.78rem !important;
+  font-family: var(--mono) !important;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- tabs --------------------------------------------------------- */
+
+.stTabs [data-baseweb="tab-list"] {
+  gap: 0.35rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0;
+  margin-bottom: 1.3rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 550;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0;
+}
+
+.stTabs [data-baseweb="tab"]:hover { color: var(--text); background: transparent; }
+
+.stTabs [aria-selected="true"] {
+  color: var(--accent) !important;
+  border-bottom-color: var(--accent) !important;
+  background: transparent !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"],
+.stTabs [data-baseweb="tab-border"] { display: none; }
+
+/* ---------- sidebar ------------------------------------------------------ */
+
+[data-testid="stSidebar"] {
+  background: var(--ink-2);
+  border-right: 1px solid var(--line);
+}
+
+[data-testid="stSidebar"] .block-container { padding: 1.4rem 1.15rem 2rem; }
+
+[data-testid="stSidebar"] h4 {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted-dim);
+  margin: 1.4rem 0 0.55rem;
+}
+
+.side-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.side-brand .mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, var(--accent), var(--accent-dim));
+  color: #0a0c07;
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+
+.side-brand .name { font-weight: 650; font-size: 0.92rem; letter-spacing: -0.01em; }
+.side-brand .ver { font-family: var(--mono); font-size: 0.66rem; color: var(--muted-dim); }
+
+/* ---------- stat cards --------------------------------------------------- */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 0.4rem 0 1.3rem;
+}
+
+.stat {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted-dim);
+}
+
+.stat-value {
+  font-size: 1.62rem;
+  font-weight: 660;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.stat-sub { font-size: 0.74rem; color: var(--muted); }
+
+/* ---------- chips -------------------------------------------------------- */
+
+.chip-cloud { display: flex; flex-wrap: wrap; gap: 0.42rem; margin: 0.2rem 0 0.4rem; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 520;
+  padding: 0.28rem 0.62rem;
+  border-radius: 7px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.035);
+  color: #d8dde9;
+  white-space: nowrap;
+  transition: all 0.14s ease;
+}
+
+.chip:hover { border-color: rgba(200, 247, 81, 0.45); color: var(--accent); }
+
+.chip-accent {
+  background: rgba(200, 247, 81, 0.09);
+  border-color: rgba(200, 247, 81, 0.3);
+  color: var(--accent);
+}
+
+.chip-warn {
+  background: rgba(242, 146, 78, 0.1);
+  border-color: rgba(242, 146, 78, 0.32);
+  color: #f2924e;
+}
+
+.chip-miss {
+  background: rgba(242, 104, 107, 0.08);
+  border-color: rgba(242, 104, 107, 0.3);
+  color: #f2686b;
+}
+
+.chip-ghost {
+  background: transparent;
+  border-style: dashed;
+  color: var(--muted-dim);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+/* ---------- timeline ----------------------------------------------------- */
+
+.timeline { list-style: none; margin: 0.2rem 0 0; padding: 0 0 0 1.1rem; border-left: 1px solid var(--line-strong); }
+
+.tl-item { position: relative; padding: 0 0 1.25rem 1.1rem; }
+.tl-item:last-child { padding-bottom: 0.2rem; }
+
+.tl-dot {
+  position: absolute;
+  left: -1.44rem;
+  top: 0.35rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 247, 81, 0.14);
+}
+
+.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45rem; }
+.tl-title { font-weight: 600; font-size: 0.94rem; }
+.tl-company { color: var(--muted); font-size: 0.86rem; }
+
+.tl-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.71rem;
+  color: var(--muted-dim);
+  margin-top: 0.18rem;
+}
+
+.tl-dur {
+  color: var(--accent-dim);
+  border: 1px solid rgba(200, 247, 81, 0.2);
+  border-radius: 5px;
+  padding: 0 0.32rem;
+}
+
+.tl-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.55; margin: 0.4rem 0 0; }
+
+/* ---------- bullets ------------------------------------------------------ */
+
+.bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+
+.b-item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.006));
+  border: 1px solid var(--line);
+  border-left: 2px solid rgba(200, 247, 81, 0.5);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.b-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(200, 247, 81, 0.09);
+  border-radius: 5px;
+  padding: 0.16rem 0.36rem;
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+}
+
+.b-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); margin-top: 0.55rem; flex-shrink: 0;
+}
+
+/* ---------- key/value ---------------------------------------------------- */
+
+.kv-list { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  font-size: 0.85rem;
+}
+
+.kv:last-child { border-bottom: none; }
+
+.kv-k { color: var(--muted-dim); font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.07em; }
+
+.kv-v { color: var(--text); text-align: right; word-break: break-word; max-width: 62%; }
+
+/* ---------- score ring --------------------------------------------------- */
+
+.ring-wrap { display: flex; justify-content: center; align-items: center; padding: 0.2rem 0; }
+.ring { width: 190px; height: 190px; }
+
+.ring-bg { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 8; }
+
+.ring-fg {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 60px 60px;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.ring-value {
+  fill: var(--text);
+  font-size: 2.15rem;
+  font-weight: 680;
+  text-anchor: middle;
+  font-family: var(--sans);
+  letter-spacing: -0.04em;
+}
+
+.ring-pct { fill: var(--muted-dim); font-size: 0.95rem; font-weight: 500; }
+.ring-cap { fill: var(--muted-dim); font-size: 0.6rem; text-anchor: middle; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; }
+
+/* ---------- meters ------------------------------------------------------- */
+
+.meter { margin-bottom: 0.95rem; }
+
+.m-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.32rem; }
+.m-label { font-size: 0.82rem; font-weight: 550; }
+.m-value { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+
+.m-track { height: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
+
+.m-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.m-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+  font-size: 0.71rem;
+  color: var(--muted-dim);
+}
+
+.m-weight { font-family: var(--mono); white-space: nowrap; }
+
+/* ---------- notices ------------------------------------------------------ */
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--muted);
+  background: var(--panel);
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0.9rem;
+}
+
+.notice strong { font-weight: 620; }
+.notice span { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+.notice-info    { border-left-color: var(--violet); }
+.notice-success { border-left-color: var(--accent); }
+.notice-warn    { border-left-color: #f2c14e; }
+.notice-error   { border-left-color: #f2686b; }
+
+/* ---------- panels ------------------------------------------------------- */
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.006));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.panel-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-dim);
+  margin-bottom: 0.75rem;
+}
+
+.empty { color: var(--muted-dim); font-size: 0.85rem; font-style: italic; margin: 0.3rem 0; }
+
+/* ---------- json --------------------------------------------------------- */
+
+.stJson, [data-testid="stJson"] {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.4rem !important;
+}
+
+/* ---------- misc streamlit chrome --------------------------------------- */
+
+hr { border-color: var(--line); margin: 1.4rem 0; }
+
+[data-testid="stExpander"] {
+  background: var(--panel);
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm);
+}
+
+[data-testid="stExpander"] summary { font-size: 0.85rem; font-weight: 550; }
+
+.stProgress > div > div > div > div { background: var(--accent); }
+
+.stSpinner > div { border-top-color: var(--accent) !important; }
+
+[data-testid="stAlert"] {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+}
+
+[data-testid="stMetricValue"] { font-size: 1.5rem; }
+
+.stSlider [data-baseweb="slider"] div[role="slider"] { background: var(--accent) !important; }
+
+.stCheckbox label span[data-baseweb="checkbox"] div { border-color: var(--line-strong); }
+
+/* ---------- footer ------------------------------------------------------- */
+
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted-dim);
+}
+
+.app-footer .sep { color: rgba(255, 255, 255, 0.14); }
+
+/* ---------- responsive --------------------------------------------------- */
+
+@media (max-width: 780px) {
+  [data-testid="stAppViewContainer"] > .main .block-container { padding: 0.8rem 1rem 3rem; }
+  .hero { padding: 2rem 1.4rem 1.8rem; border-radius: 18px; }
+  .hero h1 { font-size: 1.95rem; }
+  .hero .lede { font-size: 0.93rem; }
+  .stat-value { font-size: 1.35rem; }
+  .kv-v { max-width: 55%; }
+  .ring { width: 160px; height: 160px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
