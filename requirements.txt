@@ -1,23 +1,7 @@
-# ---------------------------------------------------------------------------
-# ai-resume-parser — runtime dependencies (Python 3.11)
-#
-# For CPU-only installs (recommended for laptops / free-tier hosts) install
-# PyTorch from the CPU wheel index first, it removes ~2.5 GB of CUDA deps:
-#
-#   pip install torch --index-url https://download.pytorch.org/whl/cpu
-#   pip install -r requirements.txt
-# ---------------------------------------------------------------------------
-
-streamlit==1.42.2
-transformers==4.49.0
-# Torch is intentionally ranged: install the CPU wheel first (see header) and
-# this line simply keeps it satisfied instead of pulling the CUDA build.
-torch>=2.2,<3.0
-huggingface-hub>=0.28,<1.0
-PyMuPDF==1.25.3
-safetensors>=0.4.5
-tokenizers>=0.21,<0.22
-numpy>=1.26,<3.0
-python-dotenv==1.0.1
-pydantic==2.10.6
-rapidfuzz==3.11.0
+streamlit
+PyMuPDF
+transformers
+torch
+scikit-learn
+pandas
+numpy
